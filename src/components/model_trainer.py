@@ -32,7 +32,7 @@ class ModelTrainer:
             )
 
             models={
-                'LogisticRegression': LogisticRegression(),
+                # 'LogisticRegression': LogisticRegression(),
                 'GaussianNB': GaussianNB(),
                 'DecisionTree': DecisionTreeClassifier()
             }
