@@ -41,14 +41,16 @@ def predict_datapoint():
             PAY_AMT6 = int(request.form.get('PAY_AMT6'))
         )
         final_new_data=data.get_data_as_dataframe()
-        print(final_new_data)
         predict_pipeline=PredictPipeline()
         pred=predict_pipeline.predict(final_new_data)
-        results = int(pred[0])
-       
-        print(pred)
-        print(results)
-        return render_template('form.html',final_result=results)
+        output = int(pred[0])
+
+        if output == 0:
+            result = 'Not Faulty'
+        else:
+            result = 'Faulty'
+
+        return render_template('form.html', final_result=result)
 
 if __name__=="__main__":
     app.run(host='0.0.0.0')
